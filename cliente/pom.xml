@@ -7,9 +7,7 @@
     <groupId>es.ricardorp</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>es.ricardorp</groupId>
   <artifactId>cliente</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>cliente</name>
   <url>http://maven.apache.org</url>
   <properties>
