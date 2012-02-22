@@ -1,0 +1,8 @@
+
+Referencias:
+http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin
+http://josearrarte.com/blog/2009/06/14/web-services-con-spring-framework-y-cxf/
+http://cxf.apache.org/docs/writing-a-service-with-spring.html
+http://cxf.apache.org/docs/why-cxf.html
+http://orangeslate.com/2009/06/10/creating-web-services-using-apache-cxf-part-1-the-basics/
+http://static.springsource.org/spring-ws/site/
