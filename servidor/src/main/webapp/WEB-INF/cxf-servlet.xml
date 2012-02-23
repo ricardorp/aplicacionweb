@@ -8,7 +8,14 @@ http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 
-	<!-- Aquí es donde implementamos toda la "magia" de transparencia del WSDL -->	
+<!-- 
+	Aquí es donde implementamos toda la "magia" de transparencia del WSDL. De
+	todas formas, en un entorno de producción, una vez que hemos creado el
+	archivo wsdl, deberíamos "fijarlo" ya que al autogenerarse, no tenemos la
+	seguridad de que se genere siempre de la misma forma (podemos realizar
+	cambios de los que no somos conscientes que afectarán a cómo se genera el
+	wsdl.
+-->
 	<jaxws:endpoint 
 	  id="servicioWeb" 
 	  implementor="es.ricardorp.aplicacionweb.servidor.ServicioWebImpl" 

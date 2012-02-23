@@ -4,6 +4,11 @@ import javax.jws.WebService;
 
 import es.ricardorp.aplicacionweb.interfaz.ServicioWeb;
 
+/**
+ * Esta clase se encarga de la implementación del servicio web.
+ * @author richie
+ *
+ */
 @WebService (endpointInterface = "es.ricardorp.aplicacionweb.interfaz.ServicioWeb")
 public class ServicioWebImpl implements ServicioWeb {
 

@@ -1,3 +1,49 @@
+Aplicación web
+==============
+
+Este pequeño proyecto no tiene otro objetivo que servir de primer ejemplo para
+todo aquél que esté en sus primeras aproximaciones a los servicios web con
+Spring y CXF. Se ha buscado una estructura modular pero sobre todo muy sencilla.
+
+Los servicios web se definen con el api JAX-WS y los implementamos con la ayuda
+de CXF. Para definir la estructura del proyecto, compilar e incluso hacer el
+deploy de la parte de servidor, utilizamos maven. En este caso, el proyecto, al
+menos de momento, sólo lo hemos probado con jetty (v7).
+
+En el proyecto se ha utilizado una aproximación por capas, en este caso, dos 
+capas: modelo y cliente divididos en cuatro módulos:
+
+	1. aplicacionweb. Es el módulo padre y no contiene fuentes ni resources, 
+	únicamente un pom.xml para referenciar a los módulos hijos.
+	2. interfaz. Este módulo incluye o incluiría todas las clases compartidas
+	entre capas: interfaz de definición del servicio web, DTOs, clases con
+	constantes, etc.
+	3. servidor. Este módulo incluye toda la lógica de negocio o modelo. En
+	principio se espera que esta parte se empaquete en un war para correr en un
+	servidor de aplicaciones.
+	4. cliente. Es el módulo del cliente o interfaz de usuario. Se encarga de
+	realizar una petición al servidor y mostrar su resultado.
+
+Y donde entra Spring en todo esto? En la parte del cliente utilizamos Spring
+framework para obtener fácilmente las referencias al servicio web. En una fase
+más avanzada, también lo utilizaremos en el modelo para definir daos, managers
+o datasources.
+
+Para realizar cualquier cambio, podéis cargar el proyecto en eclipse, es muy
+sencillo: en el directorio raíz de cada uno de los cuatro módulos ejecutáis
+mvn eclipse:eclipse y a continuación importáis el proyecto desde eclipse.
+
+Para compilar todo: mvn install desde el módulo padre.
+
+Para ejecutar jetty: mvn jetty:run desde el módulo servidor. A continuación
+podréis ver la lista de servicios disponibles en la siguiente URL:
+ http://localhost:8080/servidor/services
+
+Para generar el war: mvn package desde el módulo servidor.
+
+Cosas a hacer:
+1. Implementar las pruebas en JUnit
+2. Añadir una capa de persistencia.
 
 Referencias:
 http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin

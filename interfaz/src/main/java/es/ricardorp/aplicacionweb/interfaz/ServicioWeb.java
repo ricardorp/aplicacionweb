@@ -1,12 +1,14 @@
 package es.ricardorp.aplicacionweb.interfaz;
 
 import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
 
+/**
+ * Esta interfaz define el servicio web y los métodos que ofrece al mundo. En
+ * este caso ofrece un único método: holaMundo()
+ *
+ */
 //Marcamos la interfaz como servicio web
 @WebService
-//Le indicamos RPC para que las listas vacías no aparezcan como null.
-@SOAPBinding(style = SOAPBinding.Style.RPC)
 public interface ServicioWeb {
 
 	/**

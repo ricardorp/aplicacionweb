@@ -8,7 +8,7 @@
     
     <!-- 
     	Como el nombre del archivo de configuración es WEB-INF/cxf-servlet.xml
-    	no es necesario especificarlo. Para cambiar el nombre, lo añadimos aqu,
+    	no es necesario especificarlo. Para cambiar el nombre, lo añadimos aquí,
     	descomentamos y listo.
      -->
      
@@ -23,6 +23,10 @@
       </listener-class>
 	</listener>
 -->   
+	<!-- 
+	Aquí indicamos que todas las peticiones van a ser atendidas por el
+	servlet de CXF
+	 -->
     <servlet>
         <servlet-name>cxf</servlet-name>
         <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
