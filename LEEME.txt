@@ -41,11 +41,18 @@ podréis ver la lista de servicios disponibles en la siguiente URL:
 
 Para generar el war: mvn package desde el módulo servidor.
 
-Cosas a hacer:
+Finalmente, el cliente se puede ejecutar desde Eclipse pinchando con el botón
+derecho sobre la clase cliente y seleccionando Run as Java Application
+ 
+Cosas pendientes
+================
+
 1. Implementar las pruebas en JUnit
 2. Añadir una capa de persistencia.
 
-Referencias:
+Referencias
+===========
+
 http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin
 http://josearrarte.com/blog/2009/06/14/web-services-con-spring-framework-y-cxf/
 http://cxf.apache.org/docs/writing-a-service-with-spring.html
