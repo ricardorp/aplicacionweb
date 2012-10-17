@@ -3,26 +3,24 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
 
-    <display-name>cxf</display-name>
+    <display-name>servicio_web_con_cxf</display-name>
     <description>Apache CXF Endpoint</description>
     
-    <!-- 
-    	Como el nombre del archivo de configuración es WEB-INF/cxf-servlet.xml
-    	no es necesario especificarlo. Para cambiar el nombre, lo añadimos aquí,
-    	descomentamos y listo.
-     -->
-     
-<!-- 
+    <!-- Configuración de Spring -->
 	<context-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>WEB-INF/cxf-servlet.xml</param-value>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			WEB-INF/spring-context.xml
+			WEB-INF/cxf-servlet.xml
+		</param-value>
 	</context-param>
+ 
 	<listener>
-      <listener-class>
-         org.springframework.web.context.ContextLoaderListener
-      </listener-class>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
 	</listener>
--->   
+
 	<!-- 
 	Aquí indicamos que todas las peticiones van a ser atendidas por el
 	servlet de CXF
@@ -37,6 +35,13 @@
         <servlet-name>cxf</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
+    
+    <resource-ref id="ds">
+        <res-ref-name>jdbc/aplicacionWebDS</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
 
     <session-config>
         <session-timeout>60</session-timeout>

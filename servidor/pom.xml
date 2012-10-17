@@ -15,6 +15,11 @@
   <packaging>war</packaging>
 
   <build>
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+        </resource>
+   	</resources>
   	<plugins>
   		<!-- PLUGIN Jetty -->
   		<plugin>
@@ -25,11 +30,53 @@
             <configuration>
             	<webAppConfig>
                 	<contextPath>/${project.artifactId}</contextPath>
-                    <jettyEnvXml>jetty/jetty-env.xml</jettyEnvXml>
                     <descriptor>${project.build.directory}/${project.build.finalName}/WEB-INF/web.xml</descriptor>
                 </webAppConfig>
                 <reload>manual</reload>
             </configuration>
+            <dependencies>
+			    <dependency>
+			    	<groupId>${project.groupId}</groupId>
+			    	<artifactId>interfaz</artifactId>
+			    	<version>${project.version}</version>
+			    </dependency>
+                <dependency>
+                    <groupId>${jdbcDriver.groupId}</groupId>
+                    <artifactId>${jdbcDriver.artifactId}</artifactId>
+                    <version>${jdbcDriver.version}</version>
+                    <scope>runtime</scope>
+                </dependency>
+	            <dependency>
+                    <groupId>commons-dbcp</groupId>
+                    <artifactId>commons-dbcp</artifactId>
+                    <version>${commons-dbcp.version}</version>
+                    <scope>runtime</scope>
+                </dependency>
+			  	<dependency>
+			  		<groupId>org.springframework</groupId>
+			  		<artifactId>spring-jdbc</artifactId>
+			  		<version>${spring.version}</version>
+					<scope>runtime</scope>
+			  	</dependency>
+  	            <dependency>
+					<groupId>org.apache.cxf</groupId>
+					<artifactId>cxf-rt-core</artifactId>
+					<scope>runtime</scope>
+					<version>${apache.cxf.version}</version>
+	  	        </dependency>
+				<dependency>
+					<groupId>org.apache.cxf</groupId>
+					<artifactId>cxf-rt-frontend-jaxws</artifactId>
+					<scope>runtime</scope>
+			      	<version>${apache.cxf.version}</version>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.cxf</groupId>
+					<artifactId>cxf-rt-transports-http</artifactId>
+					<scope>runtime</scope>
+			      <version>${apache.cxf.version}</version>
+				</dependency>
+            </dependencies>        
         </plugin>
 
   		<!-- PLUGIN War -->
@@ -37,6 +84,13 @@
         	<groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-war-plugin</artifactId>
             <version>${war.plugin.version}</version>
+            <configuration>
+              	<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+				<attachClasses>true</attachClasses>
+                <classesClassifier>classes</classesClassifier>
+                
+                <packagingExcludes>WEB-INF/lib/spring-*.jar</packagingExcludes>
+			</configuration>
             <executions>
             	<execution>
                 	<goals>
@@ -44,14 +98,20 @@
                     </goals>
               		<configuration>
                     	<webResources>
+        					<!-- Apply filtering to files matching the following expressions in src/main/webapp/WEB-INF. -->
                         	<resource>
                             	<directory>src/main/webapp/WEB-INF</directory>
                                 <filtering>true</filtering>
                                 <targetPath>WEB-INF</targetPath>
                                 <includes>
-                                	<include>web.xml</include>
+                                	<include>jetty-env.xml</include>
                                 </includes>
                             </resource>
+       						 <!-- Continue considering resources the files in src/main/webapp/WEB-INF, but without applying filtering. -->
+                        	<resource>
+                            	<directory>src/main/webapp/WEB-INF</directory>
+                                <targetPath>WEB-INF</targetPath>
+                        	</resource>
                         </webResources>
                     </configuration>
                 </execution>
@@ -65,6 +125,17 @@
     	<artifactId>interfaz</artifactId>
     	<version>${project.version}</version>
     </dependency>
-    
+	<dependency>
+	    <groupId>org.hsqldb</groupId>
+	    <artifactId>hsqldb</artifactId>
+	</dependency>
+    <dependency>
+	  <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+    </dependency>
+    <dependency>
+	  <groupId>org.springframework</groupId>
+	  <artifactId>spring-web</artifactId>
+	</dependency>
   </dependencies>
 </project>

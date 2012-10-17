@@ -1,7 +1,10 @@
 package es.ricardorp.aplicacionweb.cliente;
 
+import java.util.List;
+
 import es.ricardorp.aplicacionweb.cliente.factories.SpringBeansFactory;
-import es.ricardorp.aplicacionweb.interfaz.ServicioWeb;
+import es.ricardorp.aplicacionweb.interfaz.dtos.PaisDto;
+import es.ricardorp.aplicacionweb.interfaz.services.ServicioWeb;
 
 /**
  * Esta es la clase cliente que se encarga de consumir el servicio web.
@@ -31,11 +34,10 @@ public class Cliente {
 	public static void main( String[] args ) {
 		Cliente cliente = new Cliente();
 		cliente.init();
-    	String holaMundoAsString = "Falló!";
-    	if (cliente.getServicioWeb() != null) {
-    		holaMundoAsString = cliente.getServicioWeb().holaMundo();
-    	}
-    	System.out.println(holaMundoAsString);
+    	List<PaisDto> paises = cliente.getServicioWeb().findAllPaises();
+    	for (PaisDto paisDto : paises) {
+			System.out.println(paisDto);
+		}
     }
 
 	/**

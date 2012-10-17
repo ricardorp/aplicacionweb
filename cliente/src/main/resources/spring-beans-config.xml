@@ -9,7 +9,7 @@
 
 	<!-- Configuración de CXF (conexión al servicio web)-->
     <jaxws:client id="servicioWeb"
-                  serviceClass="es.ricardorp.aplicacionweb.interfaz.ServicioWeb"
+                  serviceClass="es.ricardorp.aplicacionweb.interfaz.services.ServicioWeb"
                   address="http://localhost:8080/servidor/ServicioWeb?wsdl"/>
 
     <!-- Cliente -->
