@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-oct-2012 21:47:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="es.ricardorp.aplicacionweb.entities.Pais" table="APLICACION_WEB.PAIS">
+        <id name="idPais" type="int">
+            <column name="ID_PAIS" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombrePais" type="java.lang.String">
+            <column name="NOMBRE_PAIS" />
+        </property>
+        <property name="codigoPais" type="java.lang.String">
+            <column name="CODIGO_PAIS" />
+        </property>
+        <property name="valorPais" type="int">
+            <column name="VALOR_PAIS" />
+        </property>
+    </class>
+</hibernate-mapping>
