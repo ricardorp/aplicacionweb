@@ -52,12 +52,18 @@
                     <version>${commons-dbcp.version}</version>
                     <scope>runtime</scope>
                 </dependency>
-			  	<dependency>
-			  		<groupId>org.springframework</groupId>
-			  		<artifactId>spring-jdbc</artifactId>
-			  		<version>${spring.version}</version>
-					<scope>runtime</scope>
-			  	</dependency>
+				<dependency>
+				     <groupId>org.springframework</groupId>
+				     <artifactId>spring-orm</artifactId>
+				     <version>${spring.version}</version>
+				     <!-- will come with all needed Spring dependencies such as spring-core and spring-beans-->
+				</dependency>
+				<dependency>
+				     <groupId>org.hibernate</groupId>
+				     <artifactId>hibernate-entitymanager</artifactId>
+				     <version>${hibernate.version}</version>
+				     <!-- will come with Hibernate core-->
+				</dependency>
   	            <dependency>
 					<groupId>org.apache.cxf</groupId>
 					<artifactId>cxf-rt-core</artifactId>
@@ -75,6 +81,27 @@
 					<artifactId>cxf-rt-transports-http</artifactId>
 					<scope>runtime</scope>
 			      <version>${apache.cxf.version}</version>
+				</dependency>
+				<dependency>
+				     <groupId>cglib</groupId>
+				     <artifactId>cglib</artifactId>
+				     <version>2.2.2</version>
+				     <scope>runtime</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+					<version>${slf4j.version}</version>
+				</dependency>
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>jcl-over-slf4j</artifactId>
+					<version>${slf4j.version}</version>
+				</dependency>
+				<dependency>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+					<version>${logback.version}</version>
 				</dependency>
             </dependencies>        
         </plugin>
@@ -105,6 +132,7 @@
                                 <targetPath>WEB-INF</targetPath>
                                 <includes>
                                 	<include>jetty-env.xml</include>
+                                	<include>spring-context.xml</include>
                                 </includes>
                             </resource>
        						 <!-- Continue considering resources the files in src/main/webapp/WEB-INF, but without applying filtering. -->
@@ -131,11 +159,26 @@
 	</dependency>
     <dependency>
 	  <groupId>org.springframework</groupId>
-      <artifactId>spring-jdbc</artifactId>
-    </dependency>
-    <dependency>
-	  <groupId>org.springframework</groupId>
 	  <artifactId>spring-web</artifactId>
+	</dependency>
+	<dependency>
+	     <groupId>org.springframework</groupId>
+	     <artifactId>spring-orm</artifactId>
+	     <!-- will come with all needed Spring dependencies such as spring-core and spring-beans-->
+	</dependency>
+	<dependency>
+	     <groupId>org.hibernate</groupId>
+	     <artifactId>hibernate-entitymanager</artifactId>
+	     <!-- will come with Hibernate core-->
+	</dependency>	
+	<!-- Logging -->
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>ch.qos.logback</groupId>
+		<artifactId>logback-classic</artifactId>
 	</dependency>
   </dependencies>
 </project>

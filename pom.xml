@@ -25,7 +25,9 @@
     <antrun.plugin.version>1.7</antrun.plugin.version>
    	<eclipse.plugin.version>2.9</eclipse.plugin.version>
     <jetty.plugin.version>7.5.4.v20111024</jetty.plugin.version>
-
+	<slf4j.version>1.6.1</slf4j.version>
+	<logback.version>0.9.28</logback.version>
+	
     <!-- VERSIONES - Dependencias -->
     <apache.cxf.version>2.4.0</apache.cxf.version>
   	<jaxb.version>2.1</jaxb.version>
@@ -42,6 +44,7 @@
   	<jdbcDriver.className>org.hsqldb.jdbcDriver</jdbcDriver.className>
   	<commons-dbcp.version>1.4</commons-dbcp.version>
   	<aplicacionwebdb.file>${basedir}/aplicacionwebdb/aplicacionwebdb</aplicacionwebdb.file>
+  	<hibernate.version>4.1.7.Final</hibernate.version>
   	
   	<!-- Construcción -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -80,6 +83,22 @@
 	  		<artifactId>geronimo-annotation_1.0_spec</artifactId>
 	  		<version>1.1.1</version>
 	  	</dependency>
+			<!-- Logging -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
 	  	<dependency>
 	  		<groupId>org.apache.geronimo.javamail</groupId>
 	  		<artifactId>geronimo-javamail-1.4</artifactId>
@@ -145,7 +164,7 @@
 	  	</dependency>
 	  	<dependency>
 	  		<groupId>org.springframework</groupId>
-	  		<artifactId>spring-jdbc</artifactId>
+	  		<artifactId>spring-orm</artifactId>
 	  		<version>${spring.version}</version>
 	  	</dependency>
 	  	<dependency>
@@ -154,12 +173,6 @@
 	  		<version>${spring.version}</version>
 	  	</dependency>
 	
-		<!-- Dependencias de hibernate -->
-		<dependency>
-	    	<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
 		<!-- Hibernate uses jboss-logging for logging, for the tutorials we will use the sl4fj-simple backend -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -235,11 +248,18 @@
 		    <scope>runtime</scope>
 		</dependency>
 		<dependency>
-                <groupId>commons-dbcp</groupId>
-                <artifactId>commons-dbcp</artifactId>
-                <version>${commons-dbcp.version}</version>
-                <scope>runtime</scope>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${commons-dbcp.version}</version>
+            <scope>runtime</scope>
         </dependency>
+	  
+		<!-- Hibernate framework -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>	
 	  </dependencies>
 	</dependencyManagement>
 

@@ -1,13 +1,16 @@
 package es.ricardorp.aplicacionweb.entities;
 
+import java.io.Serializable;
+
 /**
  * Clase entity asociada a la tabla aplicacion_web.pais. Guarda toda la información relativa a un país.
  * 
  * @author richie
  *
  */
-public class Pais {
+public class Pais implements Serializable {
 
+	private static final long serialVersionUID = 302248601879004011L;
 	/**
 	 * Identificador del país
 	 */

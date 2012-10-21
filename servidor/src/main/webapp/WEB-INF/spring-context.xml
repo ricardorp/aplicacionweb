@@ -23,11 +23,36 @@
     	class="org.springframework.jndi.JndiObjectFactoryBean" 
     	p:jndiName="java:comp/env/jdbc/aplicacionWebDS"
         p:resourceRef="true" />
-    
+
+	<!-- Configuramos hibernate -->
+	<bean id="hibernateSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		p:dataSource-ref="dataSource" p:packagesToScan="es.ricardorp.aplicacionweb.entities">
+		<property name="mappingResources">
+		  <list>
+			<value>hbmxml/Pais.hbm.xml</value>
+		  </list>
+		</property>
+	</bean>
+	
+	<!-- y el gestor de transacciones -->
+	<bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="hibernateSessionFactory"/>
+	</bean>
+	
+    <!-- Gestionamos las transacciones con anotaciones -->
+    <tx:annotation-driven transaction-manager="txManager" />
+
+	<!-- CONFIGURACION DE DAOS -->
+	<!-- Con Hibernate -->
+    <bean id="paisDao" class="es.ricardorp.aplicacionweb.entities.PaisDaoHibernate">
+    	<property name="sessionFactory" ref="hibernateSessionFactory" />
+    </bean>
+	<!-- con spring-jdbc -->    
+    <!-- 
     <bean id="paisDao" class="es.ricardorp.aplicacionweb.entities.PaisDaoImpl">
     	<property name="dataSource" ref="dataSource" />
     </bean>
-    
+    -->
     <bean id="servicioWebImpl" class="es.ricardorp.aplicacionweb.servidor.ServicioWebImpl">
     	<property name="paisDao" ref="paisDao" />
     </bean>

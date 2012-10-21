@@ -7,6 +7,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import es.ricardorp.aplicacionweb.entities.Pais;
 import es.ricardorp.aplicacionweb.entities.PaisDao;
@@ -28,6 +29,7 @@ public class ServicioWebImpl implements ServicioWeb {
 	 * @see es.ricardorp.aplicacionweb.interfaz.services.ServicioWeb#findAllPaises()
 	 */
 	@Override
+	@Transactional(readOnly=true)
 	public List<PaisDto> findAllPaises() {
 		List<Pais> paises = paisDao.findAll();
 		List<PaisDto> paisesDto = new ArrayList<PaisDto>(paises.size());
