@@ -19,7 +19,12 @@ import es.ricardorp.aplicacionweb.interfaz.services.ServicioWeb;
  * @author richie
  *
  */
-@WebService (name= "servicioWeb", endpointInterface = "es.ricardorp.aplicacionweb.interfaz.services.ServicioWeb")
+@WebService (
+	name= "servicioWeb",
+	portName = "servicioWebPort",
+	targetNamespace = "http://aplicacionweb.ricardorp.es/",
+	serviceName = "ServicioWeb",
+	endpointInterface = "es.ricardorp.aplicacionweb.interfaz.services.ServicioWeb")
 @Service ("servicioWebImpl")
 public class ServicioWebImpl implements ServicioWeb {
 
