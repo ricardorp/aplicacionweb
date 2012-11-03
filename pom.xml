@@ -30,6 +30,7 @@
 	
     <!-- VERSIONES - Dependencias -->
     <apache.cxf.version>2.4.0</apache.cxf.version>
+    <cglib.version>2.2.2</cglib.version>
   	<jaxb.version>2.1</jaxb.version>
   	<jaxws.version>2.2.8</jaxws.version>
   	<spring.version>3.1.1.RELEASE</spring.version>
@@ -203,6 +204,12 @@
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-transports-http</artifactId>
 			<version>${apache.cxf.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>${cglib.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 	            
